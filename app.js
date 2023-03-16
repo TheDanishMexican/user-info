@@ -36,18 +36,73 @@ function validateUser(name, title, mail, image, userName, age) {
       age > 18) == true
   ) {
     document.querySelector("h4").textContent = "This is a valid user";
-    document.querySelector("h4").className = "";
+    document.querySelector("h4").classList.remove("redtext");
     document.querySelector("h4").classList.add("greentext");
-  } else document.querySelector("h4").textContent = "This is an invalid user";
-  document.querySelector("h4").classList.add("redtext");
+  } else {
+    document.querySelector("h4").textContent = "This is an invalid user";
+    document.querySelector("h4").classList.remove("greentext");
+    document.querySelector("h4").classList.add("redtext");
+  }
 
+  nameValidity(name);
+
+  titleValidity(title);
+
+  userNameValidity(userName);
+
+  ageValidity(age);
+
+  mailValidity(mail);
+
+  imageValidity(image);
+}
+
+function nameValidity(name) {
   if (name.length < 2) {
     document.querySelector("#name-validity").textContent = "Name is too short";
-  }
-  if (title.length == 0) {
-    document.querySelector("#title-validity").textContent = "No title input";
+  } else {
+    document.querySelector("#name-validity").textContent = "";
   }
 }
 
-//Jeg får fejlbesked frem, men når jeg så indtaster noget nyt bliver,
-// fejlbeskeden der? og den røde farve bliver ikke fjernet når brugeren er valid?
+function titleValidity(title) {
+  if (title.length == 0) {
+    document.querySelector("#title-validity").textContent = "No title input";
+  } else {
+    document.querySelector("#title-validity").textContent = "";
+  }
+}
+
+function userNameValidity(userName) {
+  if (userName === "") {
+    document.querySelector("#userName-validity").textContent =
+      "No username input";
+  } else {
+    document.querySelector("#userName-validity").textContent = "";
+  }
+}
+
+function ageValidity(age) {
+  if (!age) {
+    document.querySelector("#age-validity").textContent = "No age chosen";
+  } else {
+    document.querySelector("#age-validity").textContent = "";
+  }
+}
+
+function mailValidity(mail) {
+  if (!(mail.length > 6 && mail.length < 21)) {
+    document.querySelector("#mail-validity").textContent =
+      "Mail input too short";
+  } else {
+    document.querySelector("#mail-validity").textContent = "";
+  }
+}
+
+function imageValidity(image) {
+  if (!image) {
+    document.querySelector("#image-validity").textContent = "No image input";
+  } else {
+    document.querySelector("#image-validity").textContent = "";
+  }
+}
