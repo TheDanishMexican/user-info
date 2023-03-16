@@ -36,7 +36,18 @@ function validateUser(name, title, mail, image, userName, age) {
       age > 18) == true
   ) {
     document.querySelector("h4").textContent = "This is a valid user";
+    document.querySelector("h4").className = "";
     document.querySelector("h4").classList.add("greentext");
   } else document.querySelector("h4").textContent = "This is an invalid user";
   document.querySelector("h4").classList.add("redtext");
+
+  if (name.length < 2) {
+    document.querySelector("#name-validity").textContent = "Name is too short";
+  }
+  if (title.length == 0) {
+    document.querySelector("#title-validity").textContent = "No title input";
+  }
 }
+
+//Jeg får fejlbesked frem, men når jeg så indtaster noget nyt bliver,
+// fejlbeskeden der? og den røde farve bliver ikke fjernet når brugeren er valid?
